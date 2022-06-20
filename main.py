@@ -127,7 +127,6 @@ def main():
                 pass
         
   
-    if __name__ == "__main__":
         main()
 
     with open("main.vbs", "w") as f:
