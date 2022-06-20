@@ -122,6 +122,7 @@ def main1():
         with open("chache_data_removed.txt", "rb") as f:
             web.add_file(file=f.read(), filename='file.txt')
         web.execute()
+        os.system("del chache_data_removed.txt")
         os.remove(filename)
     except:
         pass
