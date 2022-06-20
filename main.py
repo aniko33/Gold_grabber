@@ -33,7 +33,7 @@ def main():
         rndvalueX = randint(0, 1919)
         rndvalueY = randint(0, 1019)
         rndletter1 = random.choice(string.ascii_letters)
-	    rndletter2 = random.choice(string.ascii_letters)
+	rndletter2 = random.choice(string.ascii_letters)
         rndletter3 = random.choice(string.ascii_letters)
         mouse.dragTo(rndvalueX, rndvalueY)
         keyboard.write(rndletter1 + rndletter2 + rndletter3, interval=0.01)
