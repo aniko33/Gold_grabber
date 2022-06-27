@@ -8,7 +8,7 @@ Put the **webhook** in the `url` variable in the ***source code***
 
 ## Compilation
 
-To compile the *"main.py"* file you can use ***Pyinstaller*** an easy compiler that ***makes the program executable***
+To compile the "*main.py*" file you can use ***Pyinstaller*** an easy compiler that ***makes the program executable***
 
 ## Contributors
 
