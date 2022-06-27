@@ -1,5 +1,7 @@
 <h1 align="center">Gold grabber</h1>
 
+![Screenshot_2022-06-27_10-41-32](https://user-images.githubusercontent.com/76649588/175898242-ea28a160-3b16-4e50-9763-7e8bdfe173c0.png)
+
 ### Description
 Program that takes chrome ***passwords and tokens***,
 useful for grabbing
